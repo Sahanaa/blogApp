@@ -1,0 +1,16 @@
+<div class="clearfix">
+	<form ng-Submit="blog()">
+		<input required type="text" class="form-control" placeholder="Your name" ng-model="newBlog.created_by" /> 
+		<textarea required class="form-control" maxlength="200" rows="3" placeholder="Write your new post" ng-model="newBlog.text"></textarea>
+		<input class="btn submit-btn pull-right" type="submit" value="Submit" />
+	</form>
+	<div id="post-stream">
+		<h4>Your Blogs</h4>
+			<div class="blog" ng-repeat="blog in blogs | orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'"> 
+			    <img ng-src='{{blog.image}}' />
+				<p>{{blog.text}}</p>
+				<small>Blogged by @{{blog.created_by}}</small>
+				<small class="pull-right">{{blog.created_at | date:"h:mma 'on' MMM d, y"}}</small>
+			</div>
+	</div>
+</div>
